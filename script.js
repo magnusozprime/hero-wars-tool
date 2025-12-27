@@ -239,11 +239,16 @@ async function initResultsPage() {
             if ((selectedServer === 'all' || server === selectedServer) &&
                 (selectedPlatform === 'all' || platform === selectedPlatform)) {
                 
-                Object.values(serverPlatformData).forEach(team => {
-                    if (aggregatedTeams[team.teamKey]) {
-                        aggregatedTeams[team.teamKey].count += team.count;
+                // FIX: Use Object.entries() so we can see the Key (tKey) and the Data (teamData)
+                Object.entries(serverPlatformData).forEach(([tKey, teamData]) => {
+                    // Ensure we have a key to identify the team
+                    const uniqueKey = teamData.teamKey || tKey;
+
+                    if (aggregatedTeams[uniqueKey]) {
+                        aggregatedTeams[uniqueKey].count += teamData.count;
                     } else {
-                        aggregatedTeams[team.teamKey] = { ...team };
+                        // Store it, ensuring teamKey is included for the next loop
+                        aggregatedTeams[uniqueKey] = { ...teamData, teamKey: uniqueKey };
                     }
                 });
             }
@@ -269,7 +274,8 @@ async function initResultsPage() {
             resultsDisplay.appendChild(row);
         });
 
-        document.getElementById('totalTeamsCount').textContent = `Total Unique Teams: ${sorted.length}`;
+        const totalElement = document.getElementById('totalTeamsCount');
+        if(totalElement) totalElement.textContent = `Total Unique Teams: ${sorted.length}`;
     }
 
     // Events
