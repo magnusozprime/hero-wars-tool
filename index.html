@@ -12,7 +12,6 @@
     <div id="loginOverlay">
         <div class="login-box">
             <h2 style="border:none; color: var(--accent);">RESTRICTED ACCESS</h2>
-            <p>Please enter the admin passcode.</p>
             <input type="password" id="adminPass" placeholder="Enter Password">
             <br>
             <button id="loginBtn" class="primary">UNLOCK</button>
@@ -29,7 +28,7 @@
                 <h2>Database Status</h2>
                 <p>Status: <span id="dbStatus" style="color: var(--accent);">Connecting...</span></p>
             </div>
-            <button id="clearDbBtn" class="danger">⚠️ RESET DATABASE</button>
+            <a href="results.html" style="color:white; text-decoration:none;">Go to Dashboard &rarr;</a>
         </div>
     </div>
 
@@ -37,8 +36,8 @@
     <div class="container">
         <h2>Data Ingestion</h2>
         
-        <div class="controls-row" style="flex-direction: column; align-items: center;">
-            <div style="display: flex; gap: 20px; align-items: flex-end;">
+        <div class="controls-row">
+            <div style="display: flex; gap: 20px;">
                 <div>
                     <label>Server ID</label>
                     <input type="text" id="serverInput" value="S1" style="width: 80px; text-align: center;">
@@ -52,27 +51,21 @@
                     </select>
                 </div>
             </div>
-            
-            <!-- NEW DELETE BUTTON -->
-            <div style="margin-top: 15px; border-top: 1px solid #334155; padding-top: 10px; width: 100%; text-align: center;">
-                <button id="deleteSpecificServerBtn" class="danger" style="font-size: 0.8em; padding: 5px 15px; background-color: #331010; border-color: #552020;">
-                    🗑 DELETE DATA FOR THIS SERVER
-                </button>
-            </div>
+            <button id="deleteSpecificServerBtn" class="danger" style="font-size: 0.8em;">🗑 DELETE DATA FOR THIS SERVER</button>
         </div>
 
         <textarea id="rawDataInput" placeholder="Paste raw JSON response here..."></textarea>
         
-        <div class="button-group">
+        <div class="button-group" style="display:flex; justify-content:center; gap:20px; margin-top:20px;">
             <button id="processDataBtn">Analyze Structure</button>
             <button id="storeDataBtn" class="primary">UPLOAD TO CLOUD</button>
         </div>
         
-        <div id="message" class="message"></div>
+        <div id="message" class="message" style="text-align:center; margin-top:20px;"></div>
     </div>
 
     <div class="nav-links">
-        <a href="results.html">View Public Dashboard &rarr;</a>
+        <a href="results.html">Team Meta</a> | <a href="players.html">Player DB</a>
     </div>
 </body>
 </html>

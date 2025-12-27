@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Database</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <div class="logo-name">PLAYER SCOUTING</div>
+
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <input type="text" id="playerSearch" placeholder="Search Name, ID, or Guild..." 
+                   style="width: 300px; text-align: center; padding: 12px; font-size: 1.1em;">
+            <p id="resultCount" style="color: #666; margin-top: 10px;">Loading Database...</p>
+        </div>
+
+        <div id="playerGrid" class="player-grid">
+            <!-- Cards go here -->
+        </div>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Admin Input</a> | <a href="results.html">Team Meta</a>
+    </div>
+</body>
+</html>
