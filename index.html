@@ -37,18 +37,27 @@
     <div class="container">
         <h2>Data Ingestion</h2>
         
-        <div class="controls-row">
-            <div>
-                <label>Server ID</label>
-                <input type="text" id="serverInput" value="S1" style="width: 80px; text-align: center;">
+        <div class="controls-row" style="flex-direction: column; align-items: center;">
+            <div style="display: flex; gap: 20px; align-items: flex-end;">
+                <div>
+                    <label>Server ID</label>
+                    <input type="text" id="serverInput" value="S1" style="width: 80px; text-align: center;">
+                </div>
+                <div>
+                    <label>Platform</label>
+                    <select id="platformSelect">
+                        <option value="Web">Web</option>
+                        <option value="Mobile">Mobile</option>
+                        <option value="FB">Facebook</option>
+                    </select>
+                </div>
             </div>
-            <div>
-                <label>Platform</label>
-                <select id="platformSelect">
-                    <option value="Web">Web</option>
-                    <option value="Mobile">Mobile</option>
-                    <option value="FB">Facebook</option>
-                </select>
+            
+            <!-- NEW DELETE BUTTON -->
+            <div style="margin-top: 15px; border-top: 1px solid #334155; padding-top: 10px; width: 100%; text-align: center;">
+                <button id="deleteSpecificServerBtn" class="danger" style="font-size: 0.8em; padding: 5px 15px; background-color: #331010; border-color: #552020;">
+                    🗑 DELETE DATA FOR THIS SERVER
+                </button>
             </div>
         </div>
 

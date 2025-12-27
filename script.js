@@ -156,6 +156,37 @@ async function initInputPage() {
         });
     }
 
+    // --- E. SPECIFIC SERVER DELETE LOGIC ---
+    const deleteServerBtn = document.getElementById('deleteSpecificServerBtn');
+    
+    if (deleteServerBtn) {
+        deleteServerBtn.addEventListener('click', async () => {
+            const serverId = serverIn.value.trim().toUpperCase();
+            const platform = platSel.value;
+            const targetKey = `${serverId}_${platform}`;
+
+            // 1. Double Confirmation to prevent accidents
+            const confirm1 = confirm(`⚠️ Are you sure you want to delete ALL data for:\n\nSERVER: ${serverId}\nPLATFORM: ${platform}\n\nThis cannot be undone.`);
+            
+            if (confirm1) {
+                try {
+                    displayMessage(`Deleting data for ${targetKey}...`, 'info');
+                    
+                    // Remove specific path in Firebase
+                    await remove(ref(db, `stats/${targetKey}`));
+                    
+                    alert(`✅ Success! Data for ${serverId} (${platform}) has been wiped.\nYou can now upload fresh data.`);
+                    displayMessage(`Data for ${targetKey} deleted.`, 'success');
+                    
+                } catch (e) {
+                    console.error(e);
+                    alert("Error deleting data: " + e.message);
+                    displayMessage("Delete failed.", 'error');
+                }
+            }
+        });
+    }
+
     if(uploadBtn) {
         uploadBtn.addEventListener('click', async () => {
             if(!processedTeamsCache.length) return;
