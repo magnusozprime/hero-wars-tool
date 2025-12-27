@@ -3,45 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hero Wars Data Collector</title>
+    <title>Admin - Hero Wars Stats</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Using ES Modules for Firebase -->
     <script type="module" src="script.js"></script>
 </head>
 <body>
-    <div class="logo-name">HERO WARS TEAM ANALYZER</div>
+    <!-- LOGIN LOCK SCREEN -->
+    <div id="loginOverlay">
+        <div class="login-box">
+            <h2 style="border:none; color: var(--accent);">RESTRICTED ACCESS</h2>
+            <p>Please enter the admin passcode.</p>
+            <input type="password" id="adminPass" placeholder="Enter Password">
+            <br>
+            <button id="loginBtn" class="primary">UNLOCK</button>
+            <p id="loginMsg" style="color: var(--danger); margin-top:10px;"></p>
+        </div>
+    </div>
 
+    <div class="logo-name">Hero Wars Analytics <span style="font-size:0.5em; color:#666;">ADMIN</span></div>
+
+    <!-- DB STATUS CARD -->
     <div class="container">
-        <h2 style="text-shadow: 0 0 10px #00FFFF; color: #00FFFF;">CLOUD DATABASE CONNECTED</h2>
-        <p style="text-align: center; color: #88ff88;">Status: <span id="dbStatus">Connecting...</span></p>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+                <h2>Database Status</h2>
+                <p>Status: <span id="dbStatus" style="color: var(--accent);">Connecting...</span></p>
+            </div>
+            <button id="clearDbBtn" class="danger">⚠️ RESET DATABASE</button>
+        </div>
+    </div>
 
-        <h2>RAW DATA Input</h2>
-        <p style="text-align: center;">Paste network JSON data here. It will sync to the cloud instantly.</p>
+    <!-- DATA INPUT CARD -->
+    <div class="container">
+        <h2>Data Ingestion</h2>
         
-        <div class="server-selector">
-            <label for="serverInput">Server ID:</label>
-            <input type="text" id="serverInput" value="S1" placeholder="e.g., S1" style="background-color: #0d0d0d; color: #00FF00; border: 1px solid #00FF00; padding: 5px; width: 80px; text-align: center;">
-            
-            <label for="platformSelect" style="margin-left: 20px;">Platform:</label>
-            <select id="platformSelect">
-                <option value="Web">Web</option>
-                <option value="Mobile">Mobile</option>
-                <option value="FB">Facebook</option>
-            </select>
+        <div class="controls-row">
+            <div>
+                <label>Server ID</label>
+                <input type="text" id="serverInput" value="S1" style="width: 80px; text-align: center;">
+            </div>
+            <div>
+                <label>Platform</label>
+                <select id="platformSelect">
+                    <option value="Web">Web</option>
+                    <option value="Mobile">Mobile</option>
+                    <option value="FB">Facebook</option>
+                </select>
+            </div>
         </div>
 
-        <textarea id="rawDataInput" placeholder="Paste your raw JSON data here..."></textarea>
+        <textarea id="rawDataInput" placeholder="Paste raw JSON response here..."></textarea>
         
         <div class="button-group">
-            <button id="processDataBtn">1. PROCESS DATA</button>
-            <button id="storeDataBtn" style="border-color: #00FFFF; color: #00FFFF;">2. UPLOAD TO CLOUD</button>
+            <button id="processDataBtn">Analyze Structure</button>
+            <button id="storeDataBtn" class="primary">UPLOAD TO CLOUD</button>
         </div>
         
         <div id="message" class="message"></div>
     </div>
 
     <div class="nav-links">
-        <a href="results.html">View Analysis Results</a>
+        <a href="results.html">View Public Dashboard &rarr;</a>
     </div>
 </body>
 </html>
