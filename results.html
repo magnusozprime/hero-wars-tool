@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Wars Top Teams</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <div class="logo-name">HERO WARS TEAM ANALYZER</div>
+
+    <div class="container">
+        <h2>Live Cloud Results</h2>
+        <p style="text-align: center; font-size: 0.8em; color: #888;">Data updates automatically from the database.</p>
+
+        <div class="server-selector">
+            <label for="serverFilter">Filter by Server:</label>
+            <select id="serverFilter" style="min-width: 120px;">
+                <option value="all">All Servers</option>
+            </select>
+
+            <label for="platformFilter" style="margin-left: 15px;">Platform:</label>
+            <select id="platformFilter">
+                <option value="all">All Platforms</option>
+                <option value="Web">Web</option>
+                <option value="Mobile">Mobile</option>
+                <option value="FB">Facebook</option>
+            </select>
+            
+            <button id="refreshBtn" style="margin-left: 20px; padding: 5px 10px; font-size: 0.8em;">🔄 Refresh</button>
+        </div>
+
+        <div class="team-list">
+            <div class="team-header">
+                <div class="team-cell pet-cell">PET</div>
+                <div class="team-cell hero-cell">HERO 1</div>
+                <div class="team-cell hero-cell">HERO 2</div>
+                <div class="team-cell hero-cell">HERO 3</div>
+                <div class="team-cell hero-cell">HERO 4</div>
+                <div class="team-cell hero-cell">HERO 5</div>
+                <div class="team-cell count-cell">COUNT</div>
+            </div>
+            
+            <div id="resultsDisplay">
+                <p style="text-align: center; margin-top: 20px;">Loading data from cloud...</p>
+            </div>
+        </div>
+        
+        <div id="totalTeamsCount" class="message" style="margin-top: 20px;"></div>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Go to Input Page</a>
+    </div>
+</body>
+</html>

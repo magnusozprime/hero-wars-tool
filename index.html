@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Wars Data Collector</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Using ES Modules for Firebase -->
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <div class="logo-name">HERO WARS TEAM ANALYZER</div>
+
+    <div class="container">
+        <h2 style="text-shadow: 0 0 10px #00FFFF; color: #00FFFF;">CLOUD DATABASE CONNECTED</h2>
+        <p style="text-align: center; color: #88ff88;">Status: <span id="dbStatus">Connecting...</span></p>
+
+        <h2>RAW DATA Input</h2>
+        <p style="text-align: center;">Paste network JSON data here. It will sync to the cloud instantly.</p>
+        
+        <div class="server-selector">
+            <label for="serverInput">Server ID:</label>
+            <input type="text" id="serverInput" value="S1" placeholder="e.g., S1" style="background-color: #0d0d0d; color: #00FF00; border: 1px solid #00FF00; padding: 5px; width: 80px; text-align: center;">
+            
+            <label for="platformSelect" style="margin-left: 20px;">Platform:</label>
+            <select id="platformSelect">
+                <option value="Web">Web</option>
+                <option value="Mobile">Mobile</option>
+                <option value="FB">Facebook</option>
+            </select>
+        </div>
+
+        <textarea id="rawDataInput" placeholder="Paste your raw JSON data here..."></textarea>
+        
+        <div class="button-group">
+            <button id="processDataBtn">1. PROCESS DATA</button>
+            <button id="storeDataBtn" style="border-color: #00FFFF; color: #00FFFF;">2. UPLOAD TO CLOUD</button>
+        </div>
+        
+        <div id="message" class="message"></div>
+    </div>
+
+    <div class="nav-links">
+        <a href="results.html">View Analysis Results</a>
+    </div>
+</body>
+</html>
